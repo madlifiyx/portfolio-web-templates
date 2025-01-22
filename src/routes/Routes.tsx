@@ -1,4 +1,6 @@
 import { createBrowserRouter } from 'react-router';
+import { RootLayout } from '@/layouts';
+import { ProjectPage, BlogPage, ContactPage, ResumePage } from '@/pages';
 
 /**
  * Routes component to render routes
@@ -8,10 +10,24 @@ import { createBrowserRouter } from 'react-router';
 export const routes = createBrowserRouter([
   {
     path: '/',
-    element: (
-      <>
-        <h1>Home</h1>
-      </>
-    ),
+    element: <RootLayout />,
+    children: [
+      {
+        index: true,
+        element: <ResumePage />,
+      },
+      {
+        path: 'project',
+        element: <ProjectPage />,
+      },
+      {
+        path: 'blog',
+        element: <BlogPage />,
+      },
+      {
+        path: 'contact',
+        element: <ContactPage />,
+      },
+    ],
   },
 ]);
