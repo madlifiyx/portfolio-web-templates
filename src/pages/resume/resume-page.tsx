@@ -2,6 +2,7 @@ import { HeroSection } from './sections/hero-section/hero-section';
 import { AboutSection } from './sections/about-section/about-section';
 import { WorkSection } from './sections/work-section/work-section';
 import { EducationSection } from './sections/education-section/education-section';
+import { SkillSection } from './sections/skills-section/skill-section';
 // import { ProjectSection } from './sections/project-section/project-section';
 
 export const ResumePage = () => {
@@ -11,6 +12,7 @@ export const ResumePage = () => {
       <AboutSection />
       <WorkSection />
       <EducationSection />
+      <SkillSection />
       {/* <ProjectSection /> */}
     </div>
   );

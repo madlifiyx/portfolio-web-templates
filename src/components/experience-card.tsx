@@ -42,14 +42,12 @@ export const ExperienceCard: React.FC<ExperienceCardProps> = ({
   return (
     <div
       aria-label='Experience Card'
-      className={`flex gap-2 justify-between group cursor-pointer hover:shadow-md px-4 py-3 rounded-xl w-full ${
-        isExpanded ? 'shadow-md' : ''
-      }`}
+      className={`flex gap-2 justify-between group cursor-pointer my-2.5 rounded-xl w-full `}
       onClick={handleClick}
     >
       <div className='w-full flex gap-2'>
         <div className='flex-none'>
-          <Avatar className='size-14 border'>
+          <Avatar className='size-12 border'>
             <AvatarImage
               alt={place}
               src={logoImage}
@@ -66,7 +64,7 @@ export const ExperienceCard: React.FC<ExperienceCardProps> = ({
                 href={link}
                 target='_blank'
                 rel='noopener noreferrer'
-                className='font-semibold hover:underline'
+                className='font-semibold hover:underline text-sm'
               >
                 {place}
               </a>
@@ -78,14 +76,14 @@ export const ExperienceCard: React.FC<ExperienceCardProps> = ({
                 )}
               />
             </div>
-            <h5 className='text-xs lg:text-sm italic hidden lg:block'>
+            <h5 className='text-xs lg:text-sm hidden lg:block text-slate-600 dark:text-slate-300'>
               {startDate} - {endDate}
             </h5>
           </div>
-          <h4 className='text-sm text-slate-600 dark:text-slate-300'>
+          <h4 className='text-xs font-medium text-slate-600 dark:text-slate-300 italic'>
             {position}
           </h4>
-          <h5 className='text-xs lg:text-sm italic lg:hidden'>
+          <h5 className='text-xs lg:text-sm lg:hidden text-slate-600 dark:text-slate-300'>
             {startDate} - {endDate}
           </h5>
 

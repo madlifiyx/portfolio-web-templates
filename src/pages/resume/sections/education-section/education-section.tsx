@@ -4,7 +4,7 @@ import { ExperienceCard } from '@/components/experience-card';
 export const EducationSection = () => {
   return (
     <section
-      id='work-experience'
+      id='education'
       className='mb-8'
     >
       <BlurFade

@@ -3,7 +3,7 @@ import { BlurFade } from '@/components/ui/blur-fade';
 export const ProjectSection = () => {
   return (
     <section
-      id='about'
+      id='project'
       className='mb-8'
     >
       <BlurFade
