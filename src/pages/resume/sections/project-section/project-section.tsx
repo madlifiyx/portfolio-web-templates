@@ -103,17 +103,17 @@ export const ProjectSection = () => {
           ))}
         </div>
         {projectCardData.length > 4 && (
-          <div className='flex items-center justify-center mt-4 group'>
+          <div className='flex items-center justify-end mt-4 group'>
             <Link
               to='/project'
-              className='text-center text-sm font-medium hover:underline text-slate-600'
+              className='text-center text-xs italic font-medium hover:underline text-slate-500 dark:text-slate-400'
             >
               View all projects
             </Link>
             <IconChevronRight
               size={16}
               className={cn(
-                'translate-x-0 transform opacity-0 transition-all duration-300 ease-out group-hover:translate-x-1 group-hover:opacity-100'
+                'translate-x-0 transform opacity-0 transition-all duration-300 ease-out group-hover:translate-x-1 group-hover:opacity-100 text-slate-500 dark:text-slate-400'
               )}
             />
           </div>
