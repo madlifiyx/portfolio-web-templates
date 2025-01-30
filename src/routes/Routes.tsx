@@ -1,5 +1,5 @@
 import { createBrowserRouter } from 'react-router';
-import { RootLayout } from '@/layouts';
+import { RootLayout, ErrorLayout } from '@/layouts';
 import { ProjectPage, BlogPage, ContactPage, ResumePage } from '@/pages';
 
 /**
@@ -29,5 +29,9 @@ export const routes = createBrowserRouter([
         element: <ContactPage />,
       },
     ],
+  },
+  {
+    path: '*',
+    element: <ErrorLayout />,
   },
 ]);
