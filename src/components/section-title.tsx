@@ -3,7 +3,7 @@ import { Badge } from './ui/badge';
 export interface SectionTitleProps {
   title?: string;
   shortDescription?: string;
-  description?: string;
+  description?: string | React.ReactNode;
 }
 
 const defaultSectionTitleProps: SectionTitleProps = {
