@@ -4,7 +4,7 @@ import { Link } from 'react-router';
 
 const defaultSectionTitleProps: SectionTitleProps = {
   title: 'Contact',
-  shortDescription: 'Get in Touch',
+  shortDescription: 'Connect with Me',
   description: (
     <p>
       I am always open to discussing new projects, opportunities, or just
