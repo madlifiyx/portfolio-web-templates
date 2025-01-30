@@ -15,8 +15,7 @@ import {
 } from '@tabler/icons-react';
 import { Link } from 'react-router';
 import { roleColors, typeProjectColors } from '@/lib/badge-color';
-
-const stack = ['HTML', 'CSS', 'TypeScript', 'React', 'Vite', 'Tailwind CSS'];
+import { noImageLogo } from '@/assets/images';
 
 interface IconWithTooltipProps {
   icon?: React.ReactNode;
@@ -44,91 +43,119 @@ const IconWithTooltip: React.FC<IconWithTooltipProps> = ({
   );
 };
 
-// interface ProjectCardProps {
-//   title?: string;
-//   link: string;
-//   date?: string;
-//   description?: string;
-//   stack?: string[];
-//   isBrowser?: boolean;
-//   isGithub?: boolean;
-//   browserLink?: string;
-//   githubLink?: string;
-//   companyName?: string;
-//   projectType: 'Personal' | 'Freelance' | 'Company' | string;
-//   projectRole?:
-//     | 'Frontend'
-//     | 'Backend'
-//     | 'Fullstack'
-//     | 'UI/UX'
-//     | 'Database'
-//     | 'DevOps'
-//     | 'Security'
-//     | 'Project Manager'
-//     | 'System Analyst'
-//     | 'Quality Assurance'
-//     | string;
-// }
+interface ProjectCardProps {
+  title?: string;
+  projectVideo?: string;
+  projectImage?: string;
+  date?: string;
+  description?: string;
+  stack?: string[];
+  isBrowser?: boolean;
+  isGithub?: boolean;
+  isMobile?: boolean;
+  isDekstop?: boolean;
+  browserLink?: string;
+  githubLink?: string;
+  mobileLink?: string;
+  dekstopLink?: string;
+  companyName?: string;
+  projectType?: 'Personal' | 'Freelance' | 'Company' | string;
+  projectRole?:
+    | 'Frontend'
+    | 'Backend'
+    | 'Fullstack'
+    | 'UI/UX'
+    | 'Database'
+    | 'DevOps'
+    | 'Security'
+    | 'Project Manager'
+    | 'System Analyst'
+    | 'Quality Assurance'
+    | string;
+}
 
-export const ProjectCard = () => {
-  const isBrowser = true;
-  const isGithub = true;
-  const isMobile = true;
-  const isDekstop = true;
-
+export const ProjectCard: React.FC<ProjectCardProps> = ({
+  title,
+  projectVideo,
+  projectImage,
+  date,
+  description,
+  stack = [],
+  isBrowser,
+  isGithub,
+  isMobile,
+  isDekstop,
+  browserLink,
+  githubLink,
+  mobileLink,
+  dekstopLink,
+  companyName,
+  projectType,
+  projectRole,
+}) => {
   return (
     <Card className='flex flex-col overflow-hidden border hover:shadow-lg transition-all duration-300 ease-out h-full'>
-      <video
-        src={'https://www.w3schools.com/html/mov_bbb.mp4'}
-        autoPlay
-        loop
-        muted
-        playsInline
-        className='pointer-events-none mx-auto h-40 w-full object-cover object-top'
-      />
+      {projectVideo && (
+        <video
+          src={projectVideo}
+          autoPlay
+          loop
+          muted
+          playsInline
+          className='pointer-events-none mx-auto h-40 w-full object-cover object-top'
+        />
+      )}
+      {projectImage && (
+        <img
+          src={projectImage}
+          alt={title}
+          className='pointer-events-none mx-auto h-40 w-full object-cover object-top border-b'
+        />
+      )}
+      {!projectImage && !projectVideo && (
+        <img
+          src={noImageLogo}
+          alt={title}
+          className='pointer-events-none mx-auto h-40 w-full object-cover object-top border-b'
+        />
+      )}
       <CardHeader className='px-2 pt-3'>
         <div className='flex justify-between gap-8'>
-          <CardTitle className='truncate'>
-            Lorem Ipsum is simply dummy text of the printing and typesetting
-          </CardTitle>
+          <CardTitle className='truncate'>{title}</CardTitle>
           <div className='flex justify-end gap-1'>
             {isBrowser && (
               <IconWithTooltip
                 icon={<IconWorldWww size={16} />}
-                link={''}
+                link={browserLink || ''}
                 label='Website'
               />
             )}
             {isDekstop && (
               <IconWithTooltip
                 icon={<IconDeviceLaptop size={16} />}
-                link={''}
+                link={dekstopLink || ''}
                 label='Desktop'
               />
             )}
             {isMobile && (
               <IconWithTooltip
                 icon={<IconDeviceMobile size={16} />}
-                link={''}
+                link={mobileLink || ''}
                 label='Mobile'
               />
             )}
             {isGithub && (
               <IconWithTooltip
                 icon={<IconBrandGithub size={16} />}
-                link={''}
+                link={githubLink || ''}
                 label='Source'
               />
             )}
           </div>
         </div>
-        <time className='font-sans text-xs italic'>June 2023 - Present</time>
+        <time className='font-sans text-xs italic'>{date}</time>
         <p className='text-xs font-medium text-slate-500 dark:text-slate-400'>
-          Lorem Ipsum is simply dummy text of the printing and typesetting
-          industry. Lorem Ipsum has been the industry's standard dummy text ever
-          since the 1500s, when an unknown printer took a galley of type
-          and.Lorem Ipsum is simply dummy text of the printing and typesetting
-          industry. Lorem Ipsum has been the industry's standard dummy text ever
+          {description}
         </p>
       </CardHeader>
       <CardContent className='px-2 -mt-5'>
@@ -147,9 +174,9 @@ export const ProjectCard = () => {
       <CardFooter className='px-3 pb-3 -mt-3'>
         <div className='w-full flex justify-between'>
           <div className='flex-none text-sm flex gap-1'>
-            <Badge className={`${roleColors('Frontend')}`}>Database</Badge>
-            <Badge className={`${typeProjectColors('Company')}`}>
-              Delameta Bilano
+            <Badge className={`${roleColors('Frontend')}`}>{projectRole}</Badge>
+            <Badge className={`${typeProjectColors(projectType)}`}>
+              {projectType === 'Personal' ? projectType : companyName}
             </Badge>
           </div>
         </div>

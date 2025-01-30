@@ -1,4 +1,4 @@
-export const roleColors = (role: string) => {
+export const roleColors = (role?: string) => {
   switch (role) {
     case 'Frontend':
       return 'bg-red-500 hover:bg-red-600';
@@ -25,7 +25,7 @@ export const roleColors = (role: string) => {
   }
 };
 
-export const typeProjectColors = (type: string) => {
+export const typeProjectColors = (type?: string) => {
   switch (type) {
     case 'Personal':
       return 'bg-red-400 hover:bg-red-400/80';
