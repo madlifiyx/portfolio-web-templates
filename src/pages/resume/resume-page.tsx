@@ -3,7 +3,7 @@ import { AboutSection } from './sections/about-section/about-section';
 import { WorkSection } from './sections/work-section/work-section';
 import { EducationSection } from './sections/education-section/education-section';
 import { SkillSection } from './sections/skills-section/skill-section';
-// import { ProjectSection } from './sections/project-section/project-section';
+import { ProjectSection } from './sections/project-section/project-section';
 
 export const ResumePage = () => {
   return (
@@ -13,7 +13,7 @@ export const ResumePage = () => {
       <WorkSection />
       <EducationSection />
       <SkillSection />
-      {/* <ProjectSection /> */}
+      <ProjectSection />
     </div>
   );
 };

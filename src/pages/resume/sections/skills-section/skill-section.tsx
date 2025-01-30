@@ -2,7 +2,7 @@ import { BlurFade } from '@/components/ui/blur-fade';
 import { Badge } from '@/components/ui/badge';
 
 interface SkillSectionProps {
-  skills: string[];
+  skills?: string[];
 }
 
 const defaultSkills = [
