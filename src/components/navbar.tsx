@@ -1,25 +1,15 @@
 import { Dock, DockIcon } from './ui/dock';
 import { Separator } from './ui/separator';
 import { ThemeToogle } from './theme-toogle';
-import {
-  IconUserCheck,
-  IconDownload,
-  IconChecklist,
-  IconAddressBook,
-} from '@tabler/icons-react';
+import { IconDownload } from '@tabler/icons-react';
+import { NavLink } from 'react-router';
+import resume from '@/assets/pdf/Resume.pdf';
+import { navItems } from '@/data/data-navbar';
 import {
   Tooltip,
   TooltipContent,
   TooltipTrigger,
 } from '@/components/ui/tooltip';
-import { NavLink } from 'react-router';
-import resume from '@/assets/pdf/Resume.pdf';
-
-const navItems = [
-  { to: '/', icon: <IconUserCheck />, label: 'Resume' },
-  { to: '/project', icon: <IconChecklist />, label: 'Project' },
-  { to: '/contact', icon: <IconAddressBook />, label: 'Contact' },
-];
 
 export const Navbar = () => {
   return (

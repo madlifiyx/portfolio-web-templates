@@ -3,18 +3,9 @@ import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { IconChevronRight } from '@tabler/icons-react';
 import { cn } from '@/lib/utils';
 import { motion } from 'framer-motion';
+import { ExperienceDataProps } from '@/data/data-experience';
 
-interface ExperienceCardProps {
-  link?: string;
-  logoImage?: string;
-  place?: string;
-  position?: string;
-  startDate?: string;
-  endDate?: string;
-  description?: string;
-}
-
-const defaultCotentProps: ExperienceCardProps = {
+const defaultCotentProps: ExperienceDataProps = {
   link: '#',
   logoImage: 'https://via.placeholder.com/150',
   place: 'World of Warcraft',
@@ -24,7 +15,7 @@ const defaultCotentProps: ExperienceCardProps = {
   description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
 };
 
-export const ExperienceCard: React.FC<ExperienceCardProps> = ({
+export const ExperienceCard: React.FC<ExperienceDataProps> = ({
   link = defaultCotentProps.link,
   logoImage = defaultCotentProps.logoImage,
   place = defaultCotentProps.place,

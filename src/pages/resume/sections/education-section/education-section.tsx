@@ -1,5 +1,6 @@
 import { BlurFade } from '@/components/ui/blur-fade';
 import { ExperienceCard } from '@/components/experience-card';
+import { educationExperience } from '@/data/data-experience';
 
 export const EducationSection = () => {
   return (
@@ -12,9 +13,12 @@ export const EducationSection = () => {
         inView
       >
         <h2 className='text-xl font-bold mb-2'>Education</h2>
-        <ExperienceCard />
-        <ExperienceCard />
-        <ExperienceCard />
+        {educationExperience.map((experience, index) => (
+          <ExperienceCard
+            key={index}
+            {...experience}
+          />
+        ))}
       </BlurFade>
     </section>
   );
