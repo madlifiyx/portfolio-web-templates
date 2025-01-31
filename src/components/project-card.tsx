@@ -176,7 +176,14 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
       )}
       <CardHeader className='px-2 pt-3'>
         <div className='flex justify-between gap-8'>
-          <CardTitle className='truncate'>{title}</CardTitle>
+          <Link
+            to={browserLink || ''}
+            target='_blank'
+          >
+            <CardTitle className='truncate hover:underline cursor-pointer'>
+              {title}
+            </CardTitle>
+          </Link>
           <div className='flex justify-end gap-1'>
             {isBrowser && (
               <IconWithTooltip
