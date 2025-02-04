@@ -1,8 +1,18 @@
+import { useState, useEffect } from 'react';
 import { BlurFade } from '@/components/ui/blur-fade';
 import { ExperienceCard } from '@/components/experience-card';
-import { educationExperience } from '@/data/data-experience';
+import {
+  ExperienceDataProps,
+  getEducationExperience,
+} from '@/data/data-experience';
 
 export const EducationSection = () => {
+  const [data, setData] = useState<ExperienceDataProps[] | null>(null);
+
+  useEffect(() => {
+    getEducationExperience().then(setData);
+  }, []);
+
   return (
     <section
       id='education'
@@ -13,7 +23,7 @@ export const EducationSection = () => {
         inView
       >
         <h2 className='text-xl font-bold mb-2'>Education</h2>
-        {educationExperience.map((experience, index) => (
+        {data?.map((experience, index) => (
           <ExperienceCard
             key={index}
             {...experience}

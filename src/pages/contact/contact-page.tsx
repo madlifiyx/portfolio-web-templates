@@ -1,36 +1,8 @@
+import { useState, useEffect } from 'react';
 import { BlurFade } from '@/components/ui/blur-fade';
 import { SectionTitle, SectionTitleProps } from '@/components/section-title';
 import { ContactCard } from '@/components/contact-card';
-
-import {
-  IconBrandGithub,
-  IconBrandYoutube,
-  IconBrandX,
-  IconBrandLinkedin,
-} from '@tabler/icons-react';
-
-const dataContact = [
-  {
-    title: 'Github',
-    icon: <IconBrandGithub size={40} />,
-    link: 'https://github.com/madlifiyx',
-  },
-  {
-    title: 'Youtube',
-    icon: <IconBrandYoutube size={40} />,
-    link: 'https://youtube.com/madlifiyx',
-  },
-  {
-    title: 'LinkedIn',
-    icon: <IconBrandLinkedin size={40} />,
-    link: 'https://linkedin.com/in/madlifiyx',
-  },
-  {
-    title: 'X',
-    icon: <IconBrandX size={34} />,
-    link: 'https://x.com/madlifiyx',
-  },
-];
+import { ContactData, getContactData } from '@/data/data-contact';
 
 const defaultSectionTitleProps: SectionTitleProps = {
   title: 'Contact',
@@ -44,6 +16,16 @@ const defaultSectionTitleProps: SectionTitleProps = {
 };
 
 export const ContactPage = () => {
+  const [dataContact, setDataContact] = useState<ContactData[]>([]);
+
+  useEffect(() => {
+    getContactData().then((data) => {
+      if (data) {
+        setDataContact(data);
+      }
+    });
+  });
+
   return (
     <div
       aria-label='Contact Page'

@@ -1,0 +1,22 @@
+[
+  {
+    "title": "Github",
+    "icon": "/icon/github.svg",
+    "link": "https://github.com/madlifiyx"
+  },
+  {
+    "title": "Youtube",
+    "icon": "/icon/youtube.svg",
+    "link": "https://youtube.com/madlifiyx"
+  },
+  {
+    "title": "LinkedIn",
+    "icon": "/icon/linkedin.svg",
+    "link": "https://linkedin.com/in/madlifiyx"
+  },
+  {
+    "title": "X",
+    "icon": "/icon/x.svg",
+    "link": "https://x.com/madlifiyx"
+  }
+]

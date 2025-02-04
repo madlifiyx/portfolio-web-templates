@@ -1,17 +1,27 @@
+import { useState, useEffect } from 'react';
 import { Dock, DockIcon } from './ui/dock';
 import { Separator } from './ui/separator';
 import { ThemeToogle } from './theme-toogle';
 import { IconDownload } from '@tabler/icons-react';
 import { NavLink } from 'react-router';
-import resume from '@/assets/pdf/Resume.pdf';
+import resume from '/pdf/resume.pdf';
 import { navItems } from '@/data/data-navbar';
 import {
   Tooltip,
   TooltipContent,
   TooltipTrigger,
 } from '@/components/ui/tooltip';
+import { getSummary, SummaryData } from '@/data/data-summary';
 
 export const Navbar = () => {
+  const [data, setData] = useState<SummaryData | null>(null);
+
+  useEffect(() => {
+    getSummary().then((summary) => {
+      setData(summary);
+    });
+  }, []);
+
   return (
     <div className='pointer-events-none fixed inset-x-0 bottom-6 lg:bottom-10 z-30 mx-auto mb-4 flex origin-bottom h-full max-h-14'>
       <div className='fixed bottom-0 inset-x-0 h-16 w-full bg-background to-transparent backdrop-blur-lg [-webkit-mask-image:linear-gradient(to_top,black,transparent)] dark:bg-background' />
@@ -46,7 +56,7 @@ export const Navbar = () => {
             <TooltipTrigger asChild>
               <a
                 href={resume}
-                download='Resume - Your Name.pdf'
+                download={`${data?.name}-resume.pdf`}
                 className='flex flex-col items-center justify-center'
               >
                 <IconDownload />

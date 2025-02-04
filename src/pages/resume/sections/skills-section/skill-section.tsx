@@ -1,25 +1,15 @@
+import { useState, useEffect } from 'react';
 import { BlurFade } from '@/components/ui/blur-fade';
 import { Badge } from '@/components/ui/badge';
+import { getStackData } from '@/data/data-stack';
 
-interface SkillSectionProps {
-  skills?: string[];
-}
+export const SkillSection = () => {
+  const [stack, setStack] = useState<string[] | null>([]);
 
-const defaultSkills = [
-  'HTML',
-  'CSS',
-  'JavaScript',
-  'TypeScript',
-  'React',
-  'Next.js',
-  'Tailwind CSS',
-  'Git',
-  'GitHub',
-];
+  useEffect(() => {
+    getStackData().then(setStack);
+  }, []);
 
-export const SkillSection: React.FC<SkillSectionProps> = ({
-  skills = defaultSkills,
-}) => {
   return (
     <section
       id='skills'
@@ -31,7 +21,7 @@ export const SkillSection: React.FC<SkillSectionProps> = ({
       >
         <h2 className='text-xl font-bold mb-2'>Skill</h2>
         <div className='flex flex-wrap gap-2'>
-          {skills.map((skill) => (
+          {stack?.map((skill) => (
             <Badge key={skill}>{skill}</Badge>
           ))}
         </div>

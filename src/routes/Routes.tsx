@@ -1,6 +1,6 @@
 import { createBrowserRouter } from 'react-router';
 import { RootLayout, ErrorLayout } from '@/layouts';
-import { ProjectPage, BlogPage, ContactPage, ResumePage } from '@/pages';
+import { ProjectPage, ContactPage, ResumePage } from '@/pages';
 
 /**
  * Routes component to render routes
@@ -19,10 +19,6 @@ export const routes = createBrowserRouter([
       {
         path: 'project',
         element: <ProjectPage />,
-      },
-      {
-        path: 'blog',
-        element: <BlogPage />,
       },
       {
         path: 'contact',

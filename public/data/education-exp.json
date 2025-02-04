@@ -1,0 +1,29 @@
+[
+  {
+    "link": "https://www.neuversity.id/",
+    "logoImage": "/images/education/neuversity.jpg",
+    "place": "Neuversity",
+    "position": "Full Stack Developer",
+    "startDate": "Jun 2022",
+    "endDate": "Dec 2022",
+    "description": "Developed web applications and implemented RESTful APIs for clients."
+  },
+  {
+    "link": "https://www.mit.edu",
+    "logoImage": "/images/education/neuversity.jpg",
+    "place": "Massachusetts Institute of Technology",
+    "position": "Master of Artificial Intelligence",
+    "startDate": "Sep 2019",
+    "endDate": "Jun 2021",
+    "description": "Focused on deep learning and machine learning research."
+  },
+  {
+    "link": "https://www.stanford.edu",
+    "logoImage": "/images/education/neuversity.jpg",
+    "place": "Stanford University",
+    "position": "PhD in Computer Science",
+    "startDate": "Sep 2021",
+    "endDate": "Present",
+    "description": "Researching advanced computer vision and natural language processing."
+  }
+]

@@ -17,7 +17,8 @@ import {
 import { useTheme } from '@/stores/theme-provider';
 import { Link } from 'react-router';
 import { roleColors, typeProjectColors } from '@/lib/badge-color';
-import { noImageLogo } from '@/assets/images';
+import noImageLogo from '/images/no-project-image.png';
+import { ProjectData } from '@/data/data-project';
 
 interface IconWithTooltipProps {
   icon?: React.ReactNode;
@@ -45,40 +46,9 @@ const IconWithTooltip: React.FC<IconWithTooltipProps> = ({
   );
 };
 
-interface ProjectCardProps {
-  title?: string;
-  projectVideo?: string;
-  projectImage?: string;
-  date?: string;
-  description?: string;
-  stack?: string[];
-  isBrowser?: boolean;
-  isGithub?: boolean;
-  isMobile?: boolean;
-  isDekstop?: boolean;
-  browserLink?: string;
-  githubLink?: string;
-  mobileLink?: string;
-  dekstopLink?: string;
-  companyName?: string;
-  projectType?: 'Personal' | 'Freelance' | 'Company' | string;
-  projectRole?:
-    | 'Frontend'
-    | 'Backend'
-    | 'Fullstack'
-    | 'UI/UX'
-    | 'Database'
-    | 'DevOps'
-    | 'Security'
-    | 'Project Manager'
-    | 'System Analyst'
-    | 'Quality Assurance'
-    | string;
-}
-
-export const ProjectCard: React.FC<ProjectCardProps> = ({
+export const ProjectCard: React.FC<ProjectData> = ({
   title,
-  projectVideo,
+  // projectVideo,
   projectImage,
   date,
   description,
@@ -150,7 +120,7 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
         }}
       />
 
-      {projectVideo && (
+      {/* {projectVideo && (
         <video
           src={projectVideo}
           autoPlay
@@ -159,7 +129,7 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
           playsInline
           className='pointer-events-none mx-auto h-40 w-full object-cover object-top'
         />
-      )}
+      )} */}
       {projectImage && (
         <img
           src={projectImage}
@@ -167,7 +137,7 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
           className='pointer-events-none mx-auto h-40 w-full object-cover object-top border-b'
         />
       )}
-      {!projectImage && !projectVideo && (
+      {!projectImage && (
         <img
           src={noImageLogo}
           alt={title}

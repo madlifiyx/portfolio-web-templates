@@ -1,0 +1,29 @@
+[
+  {
+    "link": "https://company1.com",
+    "logoImage": "/images/company/delameta-bilano.png",
+    "place": "Delameta Bilano",
+    "position": "Software Engineer",
+    "startDate": "Jan 2020",
+    "endDate": "Dec 2022",
+    "description": "Develope scalable web applications and improved system performance."
+  },
+  {
+    "link": "https://company2.com",
+    "logoImage": "/images/company/delameta-bilano.png",
+    "place": "Company Two",
+    "position": "Frontend Developer",
+    "startDate": "Mar 2018",
+    "endDate": "Nov 2019",
+    "description": "Designed user interfaces and enhanced user experience on multiple projects."
+  },
+  {
+    "link": "https://company3.com",
+    "logoImage": "/images/company/delameta-bilano.png",
+    "place": "Company Three",
+    "position": "Backend Developer",
+    "startDate": "May 2017",
+    "endDate": "Feb 2018",
+    "description": "Developed RESTful APIs and optimized database queries for efficiency."
+  }
+]

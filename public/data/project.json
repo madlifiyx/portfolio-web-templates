@@ -1,0 +1,64 @@
+[
+  {
+    "title": "Portfolio Website",
+    "projectImage": "/images/project/portfolio.png",
+    "date": "2024-01-10",
+    "description": "A personal portfolio website to showcase projects and skills.",
+    "stack": ["Next.js", "TailwindCSS", "Vercel"],
+    "isBrowser": true,
+    "isGithub": true,
+    "browserLink": "https://myportfolio.com",
+    "githubLink": "https://github.com/example/portfolio",
+    "projectType": "Personal",
+    "projectRole": "Frontend"
+  },
+  {
+    "title": "DevOps Automation Script",
+    "projectImage": "/images/project/airbnb.png",
+    "date": "2023-11-30",
+    "description": "A script to automate server deployment and monitoring.",
+    "stack": ["Python", "Docker", "Kubernetes", "Terraform"],
+    "isGithub": true,
+    "githubLink": "https://github.com/example/devops-script",
+    "companyName": "CloudOps Ltd.",
+    "projectType": "Freelance",
+    "projectRole": "DevOps"
+  },
+  {
+    "title": "E-Commerce Website",
+    "date": "2023-08-15",
+    "description": "A fully responsive e-commerce website for a clothing brand.",
+    "stack": ["React", "Node.js", "Express", "MongoDB"],
+    "isBrowser": true,
+    "isGithub": true,
+    "browserLink": "https://ecommerce-example.com",
+    "githubLink": "https://github.com/example/ecommerce",
+    "companyName": "Tech Solutions Inc.",
+    "projectType": "Company",
+    "projectRole": "Fullstack"
+  },
+  {
+    "title": "Mobile Banking App",
+    "date": "2023-05-22",
+    "description": "A secure mobile banking application for a financial institution.",
+    "stack": ["Flutter", "Firebase", "Dart"],
+    "isMobile": true,
+    "mobileLink": "https://playstore.com/banking-app",
+    "companyName": "FinanceCorp",
+    "projectType": "Company",
+    "projectRole": "UI/UX"
+  },
+  {
+    "title": "Task Management System",
+    "projectImage": "https://via.placeholder.com/600x400",
+    "date": "2022-09-05",
+    "description": "A project management tool for teams to track tasks and progress.",
+    "stack": ["Vue.js", "Laravel", "MySQL"],
+    "isBrowser": true,
+    "isGithub": false,
+    "browserLink": "https://taskmanager.com",
+    "companyName": "StartupHub",
+    "projectType": "Company",
+    "projectRole": "System Analyst"
+  }
+]
