@@ -27,7 +27,7 @@ src/
 └── server/  # Route HTTP, aset publik, dan layanan server
 ```
 
-Struktur dibuat sesuai kebutuhan; direktori kosong tidak dibuat. Aturan lengkap tersedia di [`docs/ARCHITECTURE.md`](docs/ARCHITECTURE.md), standar development di [`docs/DEVELOPMENT.md`](docs/DEVELOPMENT.md), dan instruksi agent di [`AGENTS.md`](AGENTS.md).
+Struktur dibuat sesuai kebutuhan; direktori kosong tidak dibuat. Aturan lengkap tersedia di [`docs/ARCHITECTURE.md`](docs/ARCHITECTURE.md), standar development di [`docs/DEVELOPMENT.md`](docs/DEVELOPMENT.md), rencana dashboard CMS di [`docs/V2-DASHBOARD-PLAN.md`](docs/V2-DASHBOARD-PLAN.md), dan instruksi agent di [`AGENTS.md`](AGENTS.md).
 
 ## Konfigurasi Rendering
 

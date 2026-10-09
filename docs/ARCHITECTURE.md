@@ -348,6 +348,6 @@ Testing rules:
 ## Structural Changes
 
 - Update this document when active structure, ownership, dependency, naming, rendering, routing, or test placement rules change.
-- Record version-specific proposed changes in the relevant release specification when version documentation exists.
+- Record version-specific proposed changes in the relevant release specification when version documentation exists. The proposed dashboard, PostgreSQL, and RustFS architecture is defined in `docs/V2-DASHBOARD-PLAN.md`.
 - Record major, durable, or costly-to-reverse decisions as an Architecture Decision Record when ADR documentation exists.
 - Do not treat a future proposal as active architecture until it is accepted and reflected here.
