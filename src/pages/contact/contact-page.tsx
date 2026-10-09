@@ -24,7 +24,7 @@ export const ContactPage = () => {
         setDataContact(data);
       }
     });
-  });
+  }, []);
 
   return (
     <div
