@@ -17,7 +17,7 @@
     "types": ["bun"],
     "baseUrl": ".",
     "paths": {
-      "@/*": ["./src/*"]
+      "@/*": ["./src/client/modules/portfolio/*"]
     }
   },
   "include": ["src", "scripts", "commitlint.config.ts"]

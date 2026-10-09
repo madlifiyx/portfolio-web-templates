@@ -2,7 +2,7 @@
 
 Template portfolio full-stack berbasis Bun, React, dan TypeScript. Versi 2 akan mempertahankan tampilan versi 1 dengan build, server, routing, dan runtime native Bun.
 
-> Status: persiapan v2. Source aplikasi pada `master` masih menggunakan implementasi v1 sampai rewrite Bun dimulai.
+> Status: v2 dalam pengembangan aktif pada `master`.
 
 ## Versi
 
@@ -12,9 +12,10 @@ Template portfolio full-stack berbasis Bun, React, dan TypeScript. Versi 2 akan 
 ## Target V2
 
 - Bun sebagai package manager, bundler, development server, production runtime, dan HTTP router.
-- React untuk UI tanpa React Router.
-- `Bun.serve()` untuk route halaman, API, aset, dan respons 404.
-- SSR dapat diaktifkan pemilik situs melalui `SSR_ENABLED`.
+- React 19 dan React Router untuk UI serta navigasi client.
+- `Bun.serve()` untuk route HTTP, HTML shell, API, aset, dan respons 404.
+- Tailwind CSS 4 melalui plugin bundler Bun.
+- SSR yang dapat dikonfigurasi melalui `SSR_ENABLED` menjadi target tahap berikutnya.
 - Tampilan responsif dan konten portfolio yang mudah disesuaikan.
 
 ## Struktur
@@ -22,16 +23,15 @@ Template portfolio full-stack berbasis Bun, React, dan TypeScript. Versi 2 akan 
 ```text
 src/
 ├── index.ts # Composition root dan entry point Bun
-├── client/  # UI React dan kode browser
-├── server/  # Route, controller, schema, plugin, dan layanan server
-└── shared/  # Kontrak dan utilitas lintas environment
+├── client/  # HTML entry, UI React, React Router, dan modul portfolio
+└── server/  # Route HTTP, aset publik, dan layanan server
 ```
 
 Struktur dibuat sesuai kebutuhan; direktori kosong tidak dibuat. Aturan lengkap tersedia di [`docs/ARCHITECTURE.md`](docs/ARCHITECTURE.md), standar development di [`docs/DEVELOPMENT.md`](docs/DEVELOPMENT.md), dan instruksi agent di [`AGENTS.md`](AGENTS.md).
 
 ## Konfigurasi Rendering
 
-Pemilik situs mengatur mode rendering melalui server environment:
+`SSR_ENABLED` belum aktif pada tahap struktur dan dependency ini. Kontrak targetnya:
 
 ```env
 SSR_ENABLED=true
@@ -44,7 +44,7 @@ SSR_ENABLED=true
 
 ## Menjalankan Aplikasi
 
-Perintah berikut menjadi kontrak workflow v2 dan akan aktif setelah runtime v2 diterapkan.
+Perintah berikut menjalankan workflow v2.
 
 Prasyarat:
 

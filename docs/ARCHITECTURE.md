@@ -93,11 +93,13 @@ src/client/
 
 `frontend.tsx` bootstraps or hydrates React into the DOM. It must stay small and must not own feature logic.
 
-`app.tsx` is the React application root. It composes global providers, page selection, layout, and modules when those concerns exist. HTTP route ownership remains in the Bun server; do not add a client routing framework.
+`app.tsx` is the React application root. It composes global providers and the React Router provider. HTTP route ownership remains in the Bun server, while React Router owns client navigation and nested UI composition.
 
 ### Client Modules
 
 `src/client/modules/<module>` owns client code for one product capability or domain.
+
+The active client currently has one `portfolio` module. Its public `index.ts` owns the React Router configuration exported to `src/client/app.tsx`.
 
 Example:
 
@@ -228,11 +230,12 @@ A plugin used by only one module remains inside that module. Do not move it to `
 ## Rendering And Routing
 
 - `Bun.serve()` owns public HTTP routes, including `/`, `/project`, `/contact`, assets, APIs, and 404 responses.
-- Do not add React Router or another client routing framework.
-- SSR is globally controlled by validated server configuration.
-- With SSR enabled, Bun renders React on the server and the browser hydrates the same application tree.
-- With SSR disabled, Bun returns the client shell and the browser mounts React.
-- Both modes must preserve page behavior, accessibility, and URLs.
+- React Router owns client route matching, navigation state, layouts, and nested page rendering after Bun serves the HTML shell.
+- Every public React Router URL must have a matching Bun HTML route so direct requests and refreshes work.
+- Server modules must not depend on React Router.
+- Current rendering is client-side: Bun returns the HTML shell and the browser mounts React.
+- Configurable SSR through validated server configuration is a planned v2 capability, not active behavior.
+- Future SSR and current client rendering must preserve page behavior, accessibility, and URLs.
 - Server-only values and secrets must never be serialized into client HTML.
 
 ## Cross-Environment Shared

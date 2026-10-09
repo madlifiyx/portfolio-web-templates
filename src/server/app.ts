@@ -1,4 +1,5 @@
 const PUBLIC_PATH_PREFIXES = ['/data/', '/icon/', '/images/', '/pdf/']
+export const PUBLIC_CLIENT_ROUTES = ['/', '/contact', '/project'] as const
 
 const servePublicFile = async (request: Request): Promise<Response> => {
   if (request.method !== 'GET' && request.method !== 'HEAD') {
@@ -22,13 +23,11 @@ const servePublicFile = async (request: Request): Promise<Response> => {
   })
 }
 
-export const createServerOptions = (
-  index: Bun.HTMLBundle,
-): Bun.Serve.Options<undefined> => ({
+export const createServerOptions = (index: Bun.HTMLBundle): Bun.Serve.Options<undefined> => ({
   routes: {
-    '/': index,
-    '/contact': index,
-    '/project': index,
+    [PUBLIC_CLIENT_ROUTES[0]]: index,
+    [PUBLIC_CLIENT_ROUTES[1]]: index,
+    [PUBLIC_CLIENT_ROUTES[2]]: index,
   },
   fetch: servePublicFile,
   development: process.env.NODE_ENV !== 'production',

@@ -137,7 +137,7 @@ if (!root) {
 - Keep authentication, authorization decisions, secrets, and database access out of client code.
 - Keep server and client initial output deterministic to prevent hydration mismatches.
 - Access `window`, `document`, browser storage, and other browser APIs only in browser-safe boundaries.
-- Do not add React Router or another client routing framework; public routes belong to `Bun.serve()`.
+- Use React Router for client navigation and nested UI routing. Add a matching `Bun.serve()` HTML route for every public client URL.
 
 ## Server Standards
 

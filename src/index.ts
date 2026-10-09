@@ -1,4 +1,4 @@
-import index from '../index.html'
+import index from './client/index.html'
 import { createServerOptions } from './server/app'
 
 const server = Bun.serve(createServerOptions(index))
