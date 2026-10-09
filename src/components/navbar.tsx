@@ -4,7 +4,6 @@ import { Separator } from './ui/separator';
 import { ThemeToogle } from './theme-toogle';
 import { IconDownload } from '@tabler/icons-react';
 import { NavLink } from 'react-router';
-import resume from '/pdf/resume.pdf';
 import { navItems } from '@/data/data-navbar';
 import {
   Tooltip,
@@ -55,7 +54,7 @@ export const Navbar = () => {
           <Tooltip>
             <TooltipTrigger asChild>
               <a
-                href={resume}
+                href='/pdf/resume.pdf'
                 download={`${data?.name}-resume.pdf`}
                 className='flex flex-col items-center justify-center'
               >

@@ -17,8 +17,9 @@ import {
 import { useTheme } from '@/stores/theme-provider';
 import { Link } from 'react-router';
 import { roleColors, typeProjectColors } from '@/lib/badge-color';
-import noImageLogo from '/images/no-project-image.png';
 import { ProjectData } from '@/data/data-project';
+
+const noImageLogo = '/images/no-project-image.png';
 
 interface IconWithTooltipProps {
   icon?: React.ReactNode;

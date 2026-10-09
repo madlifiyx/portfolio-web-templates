@@ -46,6 +46,10 @@ SSR_ENABLED=true
 
 Perintah berikut menjadi kontrak workflow v2 dan akan aktif setelah runtime v2 diterapkan.
 
+Prasyarat:
+
+- Bun `1.4.2`.
+
 Instal dependensi:
 
 ```bash
