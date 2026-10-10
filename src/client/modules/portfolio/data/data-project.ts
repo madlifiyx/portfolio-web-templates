@@ -29,6 +29,7 @@ export interface ProjectData {
     | 'System Analyst'
     | 'Quality Assurance'
     | string
+  links?: Array<{ label: string; url: string; icon?: string }>
 }
 
 export const getProjectData = async (): Promise<ProjectData[] | null> => {
@@ -53,6 +54,11 @@ export const getProjectData = async (): Promise<ProjectData[] | null> => {
         companyName: project.clientName,
         projectType: project.projectType,
         projectRole: project.projectRole,
+        links: project.links.map((link) => ({
+          label: link.label,
+          url: link.url,
+          icon: link.icon?.url,
+        })),
       }
     }) ?? null
   )

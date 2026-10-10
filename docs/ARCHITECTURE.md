@@ -101,7 +101,7 @@ src/client/
 
 The active client currently has one `portfolio` module. Its public `index.ts` owns the React Router configuration exported to `src/client/app.tsx`.
 
-The `dashboard` module owns authenticated content editing, media management, draft preview, and publishing UI. `src/client/app.tsx` composes portfolio and dashboard route definitions.
+The `dashboard` module owns authenticated content editing, media management, draft preview, and publishing UI. Entity editors use list-and-drawer flows with per-entity persistence. Platform records are seeded suggestions selected inside contact and project forms, not a primary dashboard capability. `src/client/app.tsx` composes portfolio and dashboard route definitions.
 
 Example:
 

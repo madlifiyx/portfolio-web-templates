@@ -1,9 +1,4 @@
-import {
-  IconBrandGithub,
-  IconDeviceLaptop,
-  IconDeviceMobile,
-  IconWorldWww,
-} from '@tabler/icons-react'
+import { IconExternalLink } from '@tabler/icons-react'
 import React from 'react'
 import { Badge } from '@/components/ui/badge'
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '@/components/ui/card'
@@ -40,17 +35,11 @@ export const ProjectCard: React.FC<ProjectData> = ({
   date,
   description,
   stack = [],
-  isBrowser,
-  isGithub,
-  isMobile,
-  isDekstop,
   browserLink,
-  githubLink,
-  mobileLink,
-  dekstopLink,
   companyName,
   projectType,
   projectRole,
+  links = [],
 }) => {
   const divRef = React.useRef<HTMLDivElement>(null)
   const [isFocused, setIsFocused] = React.useState(false)
@@ -131,38 +120,28 @@ export const ProjectCard: React.FC<ProjectData> = ({
       )}
       <CardHeader className="px-2 pt-3">
         <div className="flex justify-between gap-8">
-          <a href={browserLink || undefined} target="_blank" rel="noopener noreferrer">
+          <a
+            href={browserLink || links[0]?.url || undefined}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             <CardTitle className="truncate hover:underline cursor-pointer">{title}</CardTitle>
           </a>
           <div className="flex justify-end gap-1">
-            {isBrowser && (
+            {links.map((link) => (
               <IconWithTooltip
-                icon={<IconWorldWww size={16} />}
-                link={browserLink || ''}
-                label="Website"
+                key={`${link.label}-${link.url}`}
+                icon={
+                  link.icon ? (
+                    <img src={link.icon} alt="" className="size-4 object-contain" />
+                  ) : (
+                    <IconExternalLink size={16} />
+                  )
+                }
+                link={link.url}
+                label={link.label}
               />
-            )}
-            {isDekstop && (
-              <IconWithTooltip
-                icon={<IconDeviceLaptop size={16} />}
-                link={dekstopLink || ''}
-                label="Desktop"
-              />
-            )}
-            {isMobile && (
-              <IconWithTooltip
-                icon={<IconDeviceMobile size={16} />}
-                link={mobileLink || ''}
-                label="Mobile"
-              />
-            )}
-            {isGithub && (
-              <IconWithTooltip
-                icon={<IconBrandGithub size={16} />}
-                link={githubLink || ''}
-                label="Source"
-              />
-            )}
+            ))}
           </div>
         </div>
         <time className="font-sans text-xs italic">{date}</time>

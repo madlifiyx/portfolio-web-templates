@@ -10,7 +10,6 @@ const links = [
   ['Skills', '/dashboard/skills'],
   ['Projects', '/dashboard/projects'],
   ['Contacts', '/dashboard/contacts'],
-  ['Platforms', '/dashboard/platforms'],
   ['Media', '/dashboard/media'],
   ['Preview', '/dashboard/preview'],
 ] as const
@@ -73,7 +72,7 @@ export const DashboardLayout = () => {
               </NavLink>
             ))}
           </nav>
-          <main className="min-w-0 rounded-xl border bg-background p-5 shadow-sm">
+          <main className="min-w-0 rounded-2xl border bg-background p-5 shadow-xs sm:p-7">
             <DashboardOutlet />
           </main>
         </div>

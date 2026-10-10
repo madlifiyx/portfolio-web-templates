@@ -14,7 +14,6 @@ export const DASHBOARD_CLIENT_ROUTES = [
   '/dashboard/skills',
   '/dashboard/projects',
   '/dashboard/contacts',
-  '/dashboard/platforms',
   '/dashboard/media',
   '/dashboard/preview',
 ] as const
@@ -45,7 +44,6 @@ export const createServerApplication = (index: Bun.HTMLBundle): ServerApplicatio
         '/dashboard/skills': index,
         '/dashboard/projects': index,
         '/dashboard/contacts': index,
-        '/dashboard/platforms': index,
         '/dashboard/media': index,
         '/dashboard/preview': index,
         '/images/no-project-image.png': Bun.file('public/images/no-project-image.png'),

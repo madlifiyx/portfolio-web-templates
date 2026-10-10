@@ -1,18 +1,15 @@
 import { createElement } from 'react'
 import type { RouteObject } from 'react-router'
+import { ContactsPage } from './contacts-page'
 import { DashboardLayout } from './dashboard-layout'
-import {
-  ContactsPage,
-  ExperiencePage,
-  MediaPage,
-  OverviewPage,
-  PlatformsPage,
-  PreviewPage,
-  ProfilePage,
-  ProjectsPage,
-  SkillsPage,
-} from './editor-pages'
+import { ExperiencePage } from './experience-page'
 import { LoginPage } from './login-page'
+import { MediaPage } from './media-page'
+import { OverviewPage } from './overview-page'
+import { PreviewPage } from './preview-page'
+import { ProfilePage } from './profile-page'
+import { ProjectsPage } from './projects-page'
+import { SkillsPage } from './skills-page'
 
 export const dashboardRoutes: RouteObject[] = [
   { path: '/login', element: createElement(LoginPage) },
@@ -26,7 +23,6 @@ export const dashboardRoutes: RouteObject[] = [
       { path: 'skills', element: createElement(SkillsPage) },
       { path: 'projects', element: createElement(ProjectsPage) },
       { path: 'contacts', element: createElement(ContactsPage) },
-      { path: 'platforms', element: createElement(PlatformsPage) },
       { path: 'media', element: createElement(MediaPage) },
       { path: 'preview', element: createElement(PreviewPage) },
     ],

@@ -125,7 +125,6 @@ Every public React Router URL must have a matching Bun HTML route.
 /dashboard/skills
 /dashboard/projects
 /dashboard/contacts
-/dashboard/platforms
 /dashboard/media
 /dashboard/preview
 ```
@@ -602,7 +601,7 @@ GET /api/dashboard/preview
 ### Profile
 
 ```text
-PATCH /api/dashboard/profile
+PATCH /api/dashboard/profile/:id
 ```
 
 ### Experiences
@@ -611,6 +610,7 @@ PATCH /api/dashboard/profile
 POST   /api/dashboard/experiences
 PATCH  /api/dashboard/experiences/:id
 DELETE /api/dashboard/experiences/:id
+PUT    /api/dashboard/experiences/reorder
 ```
 
 ### Technologies
@@ -627,6 +627,7 @@ DELETE /api/dashboard/technologies/:id
 POST   /api/dashboard/projects
 PATCH  /api/dashboard/projects/:id
 DELETE /api/dashboard/projects/:id
+PUT    /api/dashboard/projects/reorder
 ```
 
 Project writes include technology IDs and project links.
@@ -637,17 +638,15 @@ Project writes include technology IDs and project links.
 POST   /api/dashboard/contacts
 PATCH  /api/dashboard/contacts/:id
 DELETE /api/dashboard/contacts/:id
+PUT    /api/dashboard/contacts/reorder
 ```
 
-### Platforms
+Dashboard contact values expose nullable `labelOverride` and `iconOverride` separately from
+resolved `label` and `icon` values. Clearing an override therefore restores the platform default.
 
-```text
-POST   /api/dashboard/platforms
-PATCH  /api/dashboard/platforms/:id
-DELETE /api/dashboard/platforms/:id
-```
-
-A platform in use by a contact or project link cannot be deleted.
+Platform records are seeded suggestions, not routine dashboard content. Contact and project forms
+select active suggestions inline. Built-in suggestions include trusted default icons. A custom link
+uses the `custom` suggestion plus per-entity label and icon overrides.
 
 ### Assets
 
@@ -758,13 +757,12 @@ Status conventions:
 - Visibility toggle.
 - Ordering controls.
 
-### Platforms
+### Platform Suggestions
 
-- Stable key.
-- Display name.
-- Default icon.
-- Active state.
-- Usage information.
+- Platform suggestions appear inside contact and project-link forms.
+- Built-in suggestions are seeded with trusted default icons.
+- Routine users do not manage a separate platform page.
+- Contact icon and label overrides remain nullable so platform defaults continue to apply.
 
 ### Media
 

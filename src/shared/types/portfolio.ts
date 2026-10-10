@@ -1,6 +1,7 @@
 export type AssetReference = { id: string; url: string; filename: string; contentType: string }
 
 export type Profile = {
+  id?: string
   name: string
   pronouns: string
   headline: string
@@ -34,7 +35,13 @@ export type Platform = {
   isActive: boolean
 }
 
-export type ProjectLink = { platformKey: string; label: string; url: string; sortOrder: number }
+export type ProjectLink = {
+  platformKey: string
+  label: string
+  url: string
+  icon?: AssetReference | null
+  sortOrder: number
+}
 
 export type Project = {
   id: string
@@ -53,8 +60,10 @@ export type Project = {
 export type Contact = {
   id: string
   platformKey: string
+  labelOverride?: string | null
   label: string
   url: string
+  iconOverride?: AssetReference | null
   icon: AssetReference | null
   sortOrder: number
   isVisible: boolean
@@ -71,3 +80,18 @@ export type PortfolioAggregate = {
 }
 
 export type PortfolioDraftInput = Omit<PortfolioAggregate, 'version'> & { expectedVersion: number }
+
+export type ProfileDraftInput = Omit<Profile, 'id'> & { expectedVersion: number }
+export type ExperienceDraftInput = Omit<Experience, 'id' | 'sortOrder'> & {
+  expectedVersion: number
+}
+export type ProjectDraftInput = Omit<Project, 'id' | 'sortOrder'> & { expectedVersion: number }
+export type ContactDraftInput = Omit<
+  Contact,
+  'id' | 'sortOrder' | 'label' | 'icon' | 'labelOverride' | 'iconOverride'
+> & {
+  expectedVersion: number
+  labelOverride: string | null
+  iconOverride: AssetReference | null
+}
+export type DraftReorderInput = { expectedVersion: number; ids: string[] }

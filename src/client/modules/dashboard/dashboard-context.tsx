@@ -1,5 +1,5 @@
 import { createContext, type ReactNode, useContext, useEffect, useState } from 'react'
-import type { PortfolioDraftInput } from '../../../shared/types/portfolio'
+import type { PortfolioAggregate, PortfolioDraftInput } from '../../../shared/types/portfolio'
 import { getDraft, saveDraft } from './api'
 
 type DashboardState = {
@@ -8,6 +8,7 @@ type DashboardState = {
   saving: boolean
   message: string
   setDraft: (draft: PortfolioDraftInput) => void
+  applyAggregate: (aggregate: PortfolioAggregate) => void
   save: () => Promise<void>
   reload: () => Promise<void>
 }
@@ -63,8 +64,16 @@ export const DashboardProvider = ({ children }: { children: ReactNode }) => {
     }
   }
 
+  const applyAggregate = (aggregate: PortfolioAggregate) => {
+    const { version, ...input } = aggregate
+    setDraft({ ...input, expectedVersion: version })
+    setMessage('')
+  }
+
   return (
-    <DashboardContext.Provider value={{ draft, loading, saving, message, setDraft, save, reload }}>
+    <DashboardContext.Provider
+      value={{ draft, loading, saving, message, setDraft, applyAggregate, save, reload }}
+    >
       {children}
     </DashboardContext.Provider>
   )

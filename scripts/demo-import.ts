@@ -87,8 +87,9 @@ export const loadDemoPortfolio = async (assets: DemoAssets = {}): Promise<Portfo
   ]
 
   return {
-    expectedVersion: 2,
+    expectedVersion: 1,
     profile: {
+      id: crypto.randomUUID(),
       name: summary.name,
       pronouns: summary.pronouns,
       headline: summary.position,

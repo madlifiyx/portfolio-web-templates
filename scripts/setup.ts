@@ -71,6 +71,44 @@ try {
   if (password !== confirmation) throw new Error('Password confirmation does not match')
 
   const passwordHash = await Bun.password.hash(password)
+  const storage = createStorageClient(environment)
+  const upload = async (path: string, category: string, contentType: string) => {
+    const file = Bun.file(new URL(`../public/${path}`, import.meta.url))
+    const asset = await uploadTrustedSeedAsset(
+      database,
+      storage,
+      environment,
+      file,
+      path.split('/').at(-1) ?? 'asset',
+      contentType,
+      category,
+    )
+    const [{ object_key }] = await database<Array<{ object_key: string }>>`
+      SELECT object_key FROM assets WHERE id = ${asset.id}
+    `
+    seededAssets.push({ id: asset.id, objectKey: object_key })
+    return asset
+  }
+  const platformKeys = [
+    'github',
+    'youtube',
+    'linkedin',
+    'x',
+    'website',
+    'email',
+    'phone',
+    'mobile',
+    'desktop',
+    'custom',
+  ] as const
+  const platformIcons = Object.fromEntries(
+    await Promise.all(
+      platformKeys.map(async (key) => [
+        key,
+        await upload(`icon/${key}.svg`, 'platforms', 'image/svg+xml'),
+      ]),
+    ),
+  )
   await database.begin(async (transaction) => {
     await transaction`INSERT INTO admin_users (email, password_hash) VALUES (${email}, ${passwordHash})`
     const [published] = await transaction<Array<{ id: string }>>`
@@ -99,40 +137,14 @@ try {
       ] as const
       for (const [sortOrder, platform] of platforms.entries()) {
         await transaction`
-          INSERT INTO platforms (revision_id, key, name, sort_order)
-          VALUES (${revisionId}, ${platform[0]}, ${platform[1]}, ${sortOrder})
+          INSERT INTO platforms (revision_id, key, name, default_icon_asset_id, sort_order)
+          VALUES (${revisionId}, ${platform[0]}, ${platform[1]}, ${platformIcons[platform[0]].id}, ${sortOrder})
         `
       }
     }
   })
   try {
     if (process.argv.includes('--seed-demo')) {
-      const storage = createStorageClient(environment)
-      const upload = async (path: string, category: string, contentType: string) => {
-        const file = Bun.file(new URL(`../public/${path}`, import.meta.url))
-        const asset = await uploadTrustedSeedAsset(
-          database,
-          storage,
-          environment,
-          file,
-          path.split('/').at(-1) ?? 'asset',
-          contentType,
-          category,
-        )
-        const [{ object_key }] = await database<Array<{ object_key: string }>>`
-          SELECT object_key FROM assets WHERE id = ${asset.id}
-        `
-        seededAssets.push({ id: asset.id, objectKey: object_key })
-        return asset
-      }
-      const platformIcons = Object.fromEntries(
-        await Promise.all(
-          ['github', 'youtube', 'linkedin', 'x'].map(async (key) => [
-            key,
-            await upload(`icon/${key}.svg`, 'platforms', 'image/svg+xml'),
-          ]),
-        ),
-      )
       const demo = await loadDemoPortfolio({
         resume: await upload('pdf/resume.pdf', 'profile-resume', 'application/pdf'),
         workLogo: await upload('images/company/delameta-bilano.png', 'experiences', 'image/png'),
