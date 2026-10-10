@@ -45,7 +45,7 @@ export const Navbar = () => {
           <Tooltip>
             <TooltipTrigger asChild>
               <a
-                href="/pdf/resume.pdf"
+                href={data?.resume ?? '#'}
                 download={`${data?.name}-resume.pdf`}
                 className="flex flex-col items-center justify-center"
               >

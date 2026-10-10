@@ -1,5 +1,5 @@
 import { createElement } from 'react'
-import { createBrowserRouter } from 'react-router'
+import type { RouteObject } from 'react-router'
 import { ContactPage } from './pages/contact-page'
 import { ProjectPage } from './pages/project-page'
 import { ResumePage } from './pages/resume-page'
@@ -7,7 +7,7 @@ import { RootLayout } from './root-layout'
 
 export { ThemeProvider } from './theme-provider'
 
-export const portfolioRouter = createBrowserRouter([
+export const portfolioRoutes: RouteObject[] = [
   {
     path: '/',
     element: createElement(RootLayout),
@@ -17,4 +17,4 @@ export const portfolioRouter = createBrowserRouter([
       { path: 'contact', element: createElement(ContactPage) },
     ],
   },
-])
+]

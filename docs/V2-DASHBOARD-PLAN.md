@@ -1,6 +1,6 @@
 # V2 Dashboard CMS Plan
 
-Status: Proposed
+Status: In Progress
 
 This document defines the accepted implementation plan for the self-hosted portfolio dashboard, PostgreSQL backend, and RustFS file storage. It is a release specification, not active architecture. Rules in `docs/ARCHITECTURE.md` remain authoritative until each phase is implemented and that document is updated.
 

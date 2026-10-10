@@ -1,4 +1,4 @@
-import { cp, rm } from 'node:fs/promises'
+import { cp, mkdir, rm } from 'node:fs/promises'
 import tailwindPlugin from 'bun-plugin-tailwind'
 
 await rm('dist', { recursive: true, force: true })
@@ -22,4 +22,5 @@ if (!result.success) {
   process.exit(1)
 }
 
-await cp('public', 'dist/public', { recursive: true })
+await mkdir('dist/public/images', { recursive: true })
+await cp('public/images/no-project-image.png', 'dist/public/images/no-project-image.png')

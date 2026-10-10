@@ -1,3 +1,4 @@
-import { getJSONfile } from '@/lib/get-json-file'
+import { getPortfolio } from '../api'
 
-export const getStackData = () => getJSONfile<string[]>('/data/stack.json')
+export const getStackData = async (): Promise<string[] | null> =>
+  (await getPortfolio())?.technologies ?? null

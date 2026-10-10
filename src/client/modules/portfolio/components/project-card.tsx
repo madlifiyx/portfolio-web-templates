@@ -180,7 +180,7 @@ export const ProjectCard: React.FC<ProjectData> = ({
       <CardFooter className="px-3 pb-3 -mt-3">
         <div className="w-full flex justify-between">
           <div className="flex-none text-sm flex gap-1">
-            <Badge className={`${roleColors('Frontend')}`}>{projectRole}</Badge>
+            <Badge className={`${roleColors(projectRole)}`}>{projectRole}</Badge>
             <Badge className={`${typeProjectColors(projectType)}`}>
               {projectType === 'Personal' ? projectType : companyName}
             </Badge>

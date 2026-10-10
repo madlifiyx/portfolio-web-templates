@@ -15,6 +15,9 @@ Template portfolio full-stack berbasis Bun, React, dan TypeScript. Versi 2 akan 
 - React 19 dan React Router untuk UI serta navigasi client.
 - `Bun.serve()` untuk route HTTP, HTML shell, API, aset, dan respons 404.
 - Tailwind CSS 4 melalui plugin bundler Bun.
+- Dashboard CMS pribadi dengan draft dan publish.
+- PostgreSQL untuk konten dan session.
+- RustFS untuk avatar, resume, project image, dan icon custom.
 - SSR yang dapat dikonfigurasi melalui `SSR_ENABLED` menjadi target tahap berikutnya.
 - Tampilan responsif dan konten portfolio yang mudah disesuaikan.
 
@@ -55,6 +58,30 @@ Instal dependensi:
 ```bash
 bun install
 ```
+
+Siapkan konfigurasi dan infrastructure lokal:
+
+```bash
+cp .env.example .env
+bun run infra:up
+bun run db:migrate
+bun run setup --seed-demo
+```
+
+`bun run setup` membuat satu admin pribadi. Tidak ada registrasi publik. Hapus `--seed-demo` untuk mulai dari portfolio kosong.
+
+Setup non-interaktif dapat memakai `SETUP_ADMIN_EMAIL` dan `SETUP_ADMIN_PASSWORD`. Jangan menyimpan nilai production tersebut dalam file yang di-commit.
+
+Untuk menjalankan seluruh aplikasi dalam Docker:
+
+```bash
+cp .env.example .env
+bun run docker:build
+bun run infra:up
+bun run docker:setup
+```
+
+Migration dijalankan otomatis saat container aplikasi mulai. Dashboard tersedia di `http://localhost:3000/login` dan RustFS Console di `http://localhost:9001`.
 
 Jalankan development server:
 
@@ -118,6 +145,8 @@ brew install gitleaks
 ## Deployment
 
 V2 memerlukan host yang dapat menjalankan proses Bun untuk mendukung SSR dan route server. Static-only GitHub Pages tidak mendukung mode SSR.
+
+Production juga memerlukan PostgreSQL dan RustFS atau layanan S3-compatible. Backup PostgreSQL dan object storage harus dibuat sebagai pasangan snapshot.
 
 ## Contributing
 

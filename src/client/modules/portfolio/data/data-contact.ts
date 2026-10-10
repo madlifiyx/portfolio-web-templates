@@ -1,4 +1,4 @@
-import { getJSONfile } from '@/lib/get-json-file'
+import { getPortfolio } from '../api'
 
 export interface ContactData {
   title?: string
@@ -6,4 +6,12 @@ export interface ContactData {
   link: string
 }
 
-export const getContactData = () => getJSONfile<ContactData[]>('/data/contact.json')
+export const getContactData = async (): Promise<ContactData[] | null> => {
+  const portfolio = await getPortfolio()
+  return (
+    portfolio?.contacts
+      .filter((contact) => contact.isVisible)
+      .map((contact) => ({ title: contact.label, icon: contact.icon?.url, link: contact.url })) ??
+    null
+  )
+}

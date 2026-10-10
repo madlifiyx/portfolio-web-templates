@@ -101,6 +101,8 @@ src/client/
 
 The active client currently has one `portfolio` module. Its public `index.ts` owns the React Router configuration exported to `src/client/app.tsx`.
 
+The `dashboard` module owns authenticated content editing, media management, draft preview, and publishing UI. `src/client/app.tsx` composes portfolio and dashboard route definitions.
+
 Example:
 
 ```text
@@ -140,6 +142,14 @@ Code used frequently is not automatically shared. Domain ownership takes priorit
 ## Server Architecture
 
 The server uses native `Bun.serve()` and follows a feature-based module structure. Do not install a server framework for behavior provided by Bun.
+
+Active server modules:
+
+- `auth`: single-administrator credentials and server-side sessions.
+- `portfolio`: revisioned portfolio aggregate, draft replacement, and atomic publishing.
+- `media`: RustFS upload, proxy delivery, asset listing, and safe deletion.
+
+`src/server/shared/database` owns the native `Bun.SQL` migration infrastructure. `src/server/shared/config` validates environment configuration once at startup.
 
 ```text
 src/server/

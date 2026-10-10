@@ -1,4 +1,4 @@
-import { getJSONfile } from '@/lib/get-json-file'
+import { getPortfolio } from '../api'
 
 export interface ProjectData {
   title?: string
@@ -31,4 +31,29 @@ export interface ProjectData {
     | string
 }
 
-export const getProjectData = () => getJSONfile<ProjectData[]>('/data/project.json')
+export const getProjectData = async (): Promise<ProjectData[] | null> => {
+  const portfolio = await getPortfolio()
+  return (
+    portfolio?.projects.map((project) => {
+      const links = new Map(project.links.map((link) => [link.platformKey, link.url]))
+      return {
+        title: project.title,
+        projectImage: project.image?.url,
+        date: project.projectDate ?? undefined,
+        description: project.description,
+        stack: project.technologies,
+        isBrowser: links.has('website'),
+        isGithub: links.has('github'),
+        isMobile: links.has('mobile'),
+        isDekstop: links.has('desktop'),
+        browserLink: links.get('website'),
+        githubLink: links.get('github'),
+        mobileLink: links.get('mobile'),
+        dekstopLink: links.get('desktop'),
+        companyName: project.clientName,
+        projectType: project.projectType,
+        projectRole: project.projectRole,
+      }
+    }) ?? null
+  )
+}
